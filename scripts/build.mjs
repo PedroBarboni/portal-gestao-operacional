@@ -1,0 +1,17 @@
+import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs";
+import { join } from "node:path";
+
+const root = process.cwd();
+const dist = join(root, "dist");
+
+if (existsSync(dist)) rmSync(dist, { recursive: true, force: true });
+mkdirSync(dist, { recursive: true });
+
+cpSync(join(root, "index.html"), join(dist, "index.html"));
+
+cpSync(join(root, "assets"), join(dist, "assets"), { recursive: true });
+cpSync(join(root, "home"), join(dist, "home"), { recursive: true });
+cpSync(join(root, "administradores"), join(dist, "administradores"), { recursive: true });
+cpSync(join(root, "setores"), join(dist, "setores"), { recursive: true });
+
+console.log("Build concluído em dist/");

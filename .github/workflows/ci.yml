@@ -1,0 +1,24 @@
+name: Validar PGO
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validar backend e banco
+        run: python -m unittest tests/test_foundation.py -v
+      - name: Gerar arquivos estáticos
+        run: npm run build
+

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Administração de usuários e permissões do SGO." />
+    <title>Administradores | SGO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/administradores.css" />
+    <link rel="stylesheet" href="../assets/css/usuarios.css" />
+    <link rel="stylesheet" href="../assets/css/acessos.css" />
+    <link rel="stylesheet" href="../assets/css/setores.css" />
+  </head>
+  <body>
+    <div class="admin-app">
+      <aside class="sidebar">
+        <a class="sidebar-logo" href="../home/" aria-label="Voltar ao início">
+          <img src="../assets/images/branding/logo-azul.svg" alt="PGO" />
+        </a>
+        <p class="sidebar-label">ADMINISTRAÇÃO</p>
+        <nav class="admin-nav" aria-label="Administração">
+          <button class="nav-item is-active" type="button" data-menu-screen="users"><i data-lucide="users"></i><span>Usuários</span></button>
+          <button class="nav-item" type="button" data-menu-screen="access-overview"><i data-lucide="shield-user"></i><span>Acessos e Permissões</span></button>
+          <button class="nav-item" type="button" data-menu-screen="sector-list"><i data-lucide="building-2"></i><span>Setores</span></button>
+          <button class="nav-item" type="button"><i data-lucide="settings"></i><span>Configurações Gerais</span></button>
+          <button class="nav-item" type="button"><i data-lucide="file-clock"></i><span>Logs de Acesso</span></button>
+        </nav>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <ol class="breadcrumbs"><li>Admin</li><li>/</li><li id="breadcrumb-current">Usuários</li></ol>
+          <label class="top-search"><i data-lucide="search"></i><input type="search" placeholder="Buscar no sistema..." /></label>
+          <button class="icon-button" type="button" aria-label="Notificações"><i data-lucide="bell"></i></button>
+          <span class="top-divider"></span>
+          <a class="profile" href="../home/" aria-label="Voltar à página inicial">
+            <span class="profile-copy"><strong>Carregando...</strong><small>Perfil</small></span>
+            <span class="profile-avatar"></span>
+            <i data-lucide="chevron-down"></i>
+          </a>
+        </header>
+
+        <main class="content">
+          <section class="screen is-active" data-screen="users" aria-labelledby="users-title">
+            <div class="page-heading">
+              <div><h1 id="users-title">Usuários</h1><p>Gerencie os usuários do sistema.</p></div>
+              <button class="primary-button" type="button" data-go="new-user"><i data-lucide="plus"></i>Novo usuário</button>
+            </div>
+            <div class="filters-row">
+              <label class="field search-field"><i data-lucide="search"></i><input id="user-search" type="search" placeholder="Buscar usuário..." /></label>
+              <label class="field select-field"><select id="profile-filter"><option value="">Todos os perfis</option><option>Administrador</option><option>Usuário</option><option>Supervisor</option></select><i data-lucide="chevron-down"></i></label>
+              <label class="field select-field"><select id="status-filter"><option value="">Todos os status</option><option>Ativo</option><option>Inativo</option></select><i data-lucide="chevron-down"></i></label>
+              <button class="outline-button filter-button" type="button"><i data-lucide="list-filter"></i>Filtros</button>
+            </div>
+            <div class="table-card">
+              <div class="user-table table-head"><span>Usuário</span><span>Setor principal</span><span>Perfil</span><span>Status</span><span>Último acesso</span><span>Ações</span></div>
+              <div id="user-rows"><p class="database-empty">Carregando usuários...</p></div>
+              <div class="table-footer"><span>Mostrando 0 usuários</span><nav aria-label="Paginação"><button class="is-current">1</button></nav></div>
+            </div>
+          </section>
+
+          <section class="screen user-form-screen" data-screen="new-user" aria-labelledby="new-user-title">
+            <div class="user-page-heading">
+              <div><h1 id="new-user-title">Novo usuário</h1><p>Preencha os dados para criar um novo usuário.</p></div>
+              <div class="heading-actions"><button class="outline-button" type="button" data-go="users">Cancelar</button><button class="primary-button" type="button" data-save-user="created">Salvar usuário</button></div>
+            </div>
+            <form class="user-form-grid" id="new-user-form">
+              <fieldset class="user-form-card"><legend><i data-lucide="users-round"></i>Dados pessoais</legend><label class="avatar-upload-label">Foto de perfil<span class="avatar-upload"><span class="avatar-upload-preview" id="new-avatar-preview"><i data-lucide="user-round"></i></span><span><strong>Selecionar imagem</strong><small>JPG, PNG ou WebP — máximo 2 MB</small></span><input name="avatarFile" type="file" accept="image/jpeg,image/png,image/webp" /></span></label><label>Nome completo <b>*</b><input required name="name" placeholder="Ex.: Nome Sobrenome" /></label><label>E-mail corporativo <b>*</b><input required name="email" type="email" placeholder="Ex.: nome@empresa.com.br" /></label><label>CPF <b>*</b><input required name="cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" /></label><label>Telefone<input name="phone" type="tel" inputmode="numeric" maxlength="15" placeholder="(00) 00000-0000" /></label></fieldset>
+              <fieldset class="user-form-card"><legend><i data-lucide="user-round"></i>Acesso</legend><label>Perfil <b>*</b><span class="form-select"><select required name="profile"><option value="">Selecione o perfil</option><option>Administrador</option><option>Usuário</option><option>Supervisor</option></select><i data-lucide="chevron-down"></i></span></label><label>Setor principal <b>*</b><span class="form-select"><select required name="sector"><option value="">Selecione o setor</option><option>TI</option><option>Compras</option><option>Qualidade</option><option>Produção</option><option>Manutenção</option></select><i data-lucide="chevron-down"></i></span></label><label>Status <b>*</b><span class="form-select status-select"><i></i><select required name="status"><option>Ativo</option><option>Inativo</option></select><i data-lucide="chevron-down"></i></span></label></fieldset>
+              <fieldset class="user-form-card"><legend><i data-lucide="lock-keyhole"></i>Segurança</legend><label>Senha <b>*</b><span class="password-field"><input required name="password" type="password" minlength="8" placeholder="Mínimo de 8 caracteres" /><button type="button" class="toggle-password" aria-label="Mostrar senha"><i data-lucide="eye"></i></button></span></label><label>Confirmar senha <b>*</b><span class="password-field"><input required name="confirmPassword" type="password" minlength="8" placeholder="Repita a senha" /><button type="button" class="toggle-password" aria-label="Mostrar senha"><i data-lucide="eye"></i></button></span></label><p class="password-note"><i data-lucide="shield-check"></i>A senha deve conter letras, números e caracteres especiais.</p></fieldset>
+            </form>
+          </section>
+
+          <section class="screen user-form-screen" data-screen="edit-user" aria-labelledby="edit-user-title">
+            <div class="user-page-heading">
+              <div><h1 id="edit-user-title">Editar usuário</h1><p>Atualize as informações do usuário.</p></div>
+              <div class="heading-actions"><button class="outline-button" type="button" data-go="users">Cancelar</button><button class="primary-button" type="button" data-save-user="updated">Salvar alterações</button></div>
+            </div>
+            <form class="user-form-grid" id="edit-user-form">
+              <fieldset class="user-form-card"><legend><i data-lucide="users-round"></i>Dados pessoais</legend><label>Nome completo <b>*</b><input required name="name" /></label><label>E-mail corporativo <b>*</b><input required name="email" type="email" /></label><label>CPF <b>*</b><input required name="cpf" inputmode="numeric" maxlength="14" /></label><label>Telefone<input name="phone" type="tel" inputmode="numeric" maxlength="15" /></label></fieldset>
+              <fieldset class="user-form-card"><legend><i data-lucide="user-round"></i>Acesso</legend><label>Perfil <b>*</b><span class="form-select"><select required name="profile"><option>Administrador</option><option>Usuário</option><option>Supervisor</option></select><i data-lucide="chevron-down"></i></span></label><label>Setor principal <b>*</b><span class="form-select"><select required name="sector"><option>TI</option><option>Compras</option><option>Qualidade</option><option>Produção</option><option>Manutenção</option></select><i data-lucide="chevron-down"></i></span></label><label>Status <b>*</b><span class="form-select status-select"><i></i><select required name="status"><option>Ativo</option><option>Inativo</option></select><i data-lucide="chevron-down"></i></span></label></fieldset>
+              <fieldset class="user-form-card"><legend><i data-lucide="lock-keyhole"></i>Redefinição de senha</legend><p class="form-help">Deixe em branco para manter a senha atual.</p><label>Nova senha<span class="password-field"><input name="password" type="password" minlength="8" placeholder="Mínimo de 8 caracteres" /><button type="button" class="toggle-password" aria-label="Mostrar senha"><i data-lucide="eye"></i></button></span></label><label>Confirmar nova senha<span class="password-field"><input name="confirmPassword" type="password" minlength="8" placeholder="Repita a nova senha" /><button type="button" class="toggle-password" aria-label="Mostrar senha"><i data-lucide="eye"></i></button></span></label><p class="password-note"><i data-lucide="shield-check"></i>A senha deve conter letras, números e caracteres especiais.</p></fieldset>
+            </form>
+          </section>
+
+          <section class="screen user-details-screen" data-screen="user-details" aria-labelledby="user-details-title">
+            <div class="user-page-heading"><div><h1 id="user-details-title">Detalhes do usuário</h1><p>Visualize as informações e acessos do usuário.</p></div><div class="heading-actions"><button class="outline-button maintenance-outline" id="maintenance-user-button" type="button"><i data-lucide="wrench"></i><span>Ativar manutenção</span></button><button class="outline-button danger-outline" id="delete-user-button" type="button"><i data-lucide="trash-2"></i>Excluir usuário</button><button class="outline-button blue-outline" id="edit-user-button" type="button" data-go="edit-user">Editar usuário</button></div></div>
+            <div id="user-details-content"><p class="database-empty">Carregando detalhes...</p></div>
+          </section>
+
+          <section class="screen access-screen" data-screen="access-overview" aria-labelledby="access-overview-title">
+            <div class="permission-tabs access-tabs"><button class="is-active" data-go="access-overview">Visão Geral</button><button data-go="sectors">Por Usuário</button><button>Por Perfil</button></div>
+            <h1 class="sr-only" id="access-overview-title">Visão geral de acessos e permissões</h1>
+            <div class="access-stats">
+              <article><i data-lucide="briefcase-business"></i><span><strong>0</strong><small>Usuários cadastrados</small><em>Banco local</em></span></article>
+              <article><i data-lucide="users-round"></i><span><strong>0</strong><small>Perfis cadastrados</small><em>Banco local</em></span></article>
+              <article><i data-lucide="building-2"></i><span><strong>0</strong><small>Setores configurados</small><em>Banco local</em></span></article>
+              <article><i data-lucide="panels-top-left"></i><span><strong>0</strong><small>Telas mapeadas</small><em>Banco local</em></span></article>
+            </div>
+            <section class="access-summary panel"><header><h2>Resumo por perfil</h2></header><div class="summary-table summary-head"><span>Perfil</span><span>Setores</span><span>Telas</span><span>Ações</span><span></span></div><footer>Mostrando 0 perfis <span><button class="current">1</button></span></footer></section>
+          </section>
+
+          <section class="screen access-screen" data-screen="sectors" aria-labelledby="sectors-title">
+            <div class="permission-tabs access-tabs"><button data-go="access-overview">Visão Geral</button><button class="is-active" data-go="sectors">Por Usuário</button><button>Por Perfil</button></div>
+            <div class="access-toolbar"><label>Usuário<span class="access-select"><select><option>Carregando...</option></select><i data-lucide="chevron-down"></i></span></label><div class="access-stepper"><span class="current"><b>1</b>Acesso aos setores</span><i></i><span><b>2</b>Telas do setor</span><i></i><span><b>3</b>Permissões da tela</span></div></div>
+            <section class="panel access-work-panel"><header><h2 id="sectors-title">1. Acesso aos setores</h2><p>A primeira camada de permissão define a quais setores o usuário terá acesso.</p></header><div class="permission-sector-grid" id="sector-list"></div></section>
+            <div class="access-footer"><span></span><button class="primary-button" data-go="modules">Próximo: Telas do setor<i data-lucide="arrow-right"></i></button></div>
+          </section>
+
+          <section class="screen access-screen" data-screen="modules" aria-labelledby="modules-title">
+            <div class="permission-tabs access-tabs"><button data-go="access-overview">Visão Geral</button><button class="is-active" data-go="sectors">Por Usuário</button><button>Por Perfil</button></div>
+            <div class="access-toolbar dual-select"><label>Usuário<span class="access-select"><select><option>Carregando...</option></select><i data-lucide="chevron-down"></i></span></label><label>Setor<span class="access-select"><select><option>Manutenção</option></select><i data-lucide="chevron-down"></i></span></label><div class="access-stepper"><span class="done"><b><i data-lucide="check"></i></b>Acesso aos setores</span><i></i><span class="current"><b>2</b>Telas do setor</span><i></i><span><b>3</b>Permissões da tela</span></div></div>
+            <section class="panel access-work-panel module-work-panel"><header><h2 id="modules-title">2. Telas do setor selecionado</h2><p>Selecione as telas/módulos do setor que o usuário poderá visualizar e acessar.<br />Apenas as telas ativas aqui ficarão disponíveis para o usuário dentro deste setor.</p></header><div class="module-table"><div class="module-head"><span>Telas do setor: Manutenção</span><span></span></div><div id="module-list"></div></div></section>
+            <div class="access-footer"><button class="outline-button blue-outline" data-go="sectors"><i data-lucide="arrow-left"></i>Voltar: Acesso aos setores</button><button class="primary-button" data-go="permissions">Próximo: Permissões da tela<i data-lucide="arrow-right"></i></button></div>
+          </section>
+
+          <section class="screen access-screen" data-screen="permissions" aria-labelledby="permissions-title">
+            <div class="permission-tabs access-tabs"><button data-go="access-overview">Visão Geral</button><button class="is-active" data-go="sectors">Por Usuário</button><button>Por Perfil</button></div>
+            <div class="access-toolbar triple-select"><label>Usuário<span class="access-select"><select><option>Carregando...</option></select><i data-lucide="chevron-down"></i></span></label><label>Setor<span class="access-select"><select><option>Manutenção</option></select><i data-lucide="chevron-down"></i></span></label><label>Tela<span class="access-select"><select><option>Ordens de Serviço</option></select><i data-lucide="chevron-down"></i></span></label><div class="access-stepper"><span class="done"><b><i data-lucide="check"></i></b>Acesso aos setores</span><i></i><span class="done"><b>2</b>Telas do setor</span><i></i><span class="current"><b>3</b>Permissões da tela</span></div></div>
+            <section class="panel access-work-panel permissions-work-panel"><header><h2 id="permissions-title">3. Permissões da tela</h2><p>Defina as permissões de ações que o usuário terá dentro da tela selecionada.</p></header><div class="permission-grid" id="permission-grid"></div></section>
+            <div class="access-footer"><button class="outline-button blue-outline" data-go="modules"><i data-lucide="arrow-left"></i>Voltar: Telas do setor</button><button class="primary-button" id="save-permissions">Salvar permissões</button></div>
+          </section>
+          <section class="screen sector-admin-screen" data-screen="sector-list" aria-labelledby="sector-list-title">
+            <div class="page-heading">
+              <div><h1 id="sector-list-title">Setores</h1><p>Gerencie os setores da empresa e as telas associadas.</p></div>
+              <button class="primary-button" type="button" data-go="new-sector"><i data-lucide="plus"></i>Novo setor</button>
+            </div>
+            <div class="sector-filters">
+              <label class="field search-field"><i data-lucide="search"></i><input id="sector-search" type="search" placeholder="Buscar setor..." /></label>
+              <label class="field select-field"><select id="sector-status-filter"><option value="">Todos os status</option><option>Ativo</option><option>Inativo</option></select><i data-lucide="chevron-down"></i></label>
+              <label class="field select-field"><select id="sector-category-filter"><option value="">Todas as categorias</option><option>Administrativo</option><option>Comercial</option><option>Operacional</option></select><i data-lucide="chevron-down"></i></label>
+              <button class="outline-button filter-button" type="button"><i data-lucide="list-filter"></i>Filtros</button>
+            </div>
+            <div class="sector-table-card panel">
+              <div class="sector-admin-table sector-table-head"><span>Setor</span><span>Descrição</span><span>Status</span><span>Qtd. de telas</span><span>Ações</span></div>
+              <div id="sector-rows"><p class="database-empty">Carregando setores...</p></div>
+              <footer><span id="sector-table-count">Mostrando 0 setores</span><nav><button class="current" type="button">1</button></nav></footer>
+            </div>
+          </section>
+
+          <section class="screen sector-admin-screen" data-screen="new-sector" aria-labelledby="new-sector-title">
+            <div class="user-page-heading"><div><h1 id="new-sector-title">Novo setor</h1><p>Preencha os dados para criar um novo setor.</p></div><div class="heading-actions"><button class="outline-button" type="button" data-go="sector-list">Cancelar</button><button class="primary-button" id="save-new-sector" type="button">Salvar setor</button></div></div>
+            <form class="sector-form-grid" id="new-sector-form">
+              <fieldset class="sector-form-card"><legend>Informações do setor</legend><label>Nome do setor <b>*</b><input required name="name" placeholder="Ex.: Logística" /></label><label>Descrição <b>*</b><textarea required name="description" rows="5" placeholder="Descreva o propósito deste setor..."></textarea></label><label class="sector-icon-upload-label">Ícone <b>*</b><span class="sector-icon-upload"><span class="sector-icon-preview" id="new-sector-icon-preview"><i data-lucide="image"></i></span><span><strong>Selecionar SVG ou PNG</strong><small>Arquivo com até 750 KB</small></span><input id="new-sector-icon" name="iconFile" type="file" accept="image/svg+xml,image/png,.svg,.png" /></span></label><label>Categoria <b>*</b><span class="form-select"><select required name="category"><option>Operacional</option><option>Administrativo</option><option>Comercial</option></select><i data-lucide="chevron-down"></i></span></label></fieldset>
+              <fieldset class="sector-form-card"><legend>Configuração</legend><label>Status <b>*</b><span class="form-select status-select"><i></i><select required name="status"><option>Ativo</option><option>Inativo</option></select><i data-lucide="chevron-down"></i></span></label><label>Responsável do setor<span class="form-select"><select name="responsible" class="sector-responsible-select"><option value="">Selecione o responsável</option></select><i data-lucide="chevron-down"></i></span></label><div class="initial-modules"><header><span><strong>Telas iniciais do setor</strong><small>Adicione as telas que estarão disponíveis neste setor.</small></span></header><div class="initial-module-add"><input id="initial-module-name" type="text" placeholder="Nome da tela" /><button class="outline-button blue-outline" id="add-initial-module" type="button"><i data-lucide="plus"></i>Adicionar</button></div><ul id="initial-module-list"><li class="empty-initial-modules">Nenhuma tela adicionada.</li></ul></div></fieldset>
+            </form>
+            <p class="sector-info-note"><i data-lucide="info"></i>As telas selecionadas aqui serão as telas padrão do setor.</p>
+          </section>
+
+          <section class="screen sector-admin-screen" data-screen="edit-sector" aria-labelledby="edit-sector-title">
+            <div class="user-page-heading"><div><h1 id="edit-sector-title">Editar setor</h1><p>Atualize as informações do setor.</p></div><div class="heading-actions"><button class="outline-button" type="button" data-go="sector-list">Cancelar</button><button class="primary-button" id="save-edit-sector" type="button">Salvar alterações</button></div></div>
+            <form class="sector-form-grid" id="edit-sector-form">
+              <fieldset class="sector-form-card"><legend>Informações do setor</legend><label>Nome do setor <b>*</b><input required name="name" /></label><label>Descrição <b>*</b><textarea required name="description" rows="6"></textarea></label><label class="sector-icon-upload-label">Ícone <b>*</b><span class="sector-icon-upload"><span class="sector-icon-preview" id="edit-sector-icon-preview"><i data-lucide="image"></i></span><span><strong>Trocar ícone</strong><small>SVG ou PNG com até 750 KB</small></span><input id="edit-sector-icon" name="iconFile" type="file" accept="image/svg+xml,image/png,.svg,.png" /></span></label><label>Categoria <b>*</b><span class="form-select"><select required name="category"><option>Operacional</option><option>Administrativo</option><option>Comercial</option></select><i data-lucide="chevron-down"></i></span></label></fieldset>
+              <fieldset class="sector-form-card"><legend>Configuração</legend><label>Status <b>*</b><span class="form-select status-select"><i></i><select required name="status"><option>Ativo</option><option>Inativo</option></select><i data-lucide="chevron-down"></i></span></label><label>Responsável do setor<span class="form-select"><select name="responsible" class="sector-responsible-select"><option value="">Selecione o responsável</option></select><i data-lucide="chevron-down"></i></span></label><p class="sector-side-note"><i data-lucide="info"></i><span>Este setor controla quais módulos (telas) podem ser atribuídos posteriormente nas permissões.</span></p></fieldset>
+            </form>
+          </section>
+
+          <section class="screen sector-admin-screen" data-screen="sector-modules" aria-labelledby="sector-modules-title">
+            <div class="page-heading"><div><h1 id="sector-modules-title">Telas do setor</h1><p>Gerencie as telas (módulos) disponíveis neste setor.</p></div><button class="primary-button" id="show-module-form" type="button"><i data-lucide="plus"></i>Adicionar tela</button></div>
+            <form class="module-create-panel panel" id="module-create-form" hidden><label>Nome da tela<input required name="name" placeholder="Ex.: Relatórios" /></label><label>Categoria<select name="category"><option>Operacional</option><option>Visão Geral</option><option>Cadastros</option><option>Relatórios</option><option>Configurações</option></select></label><label>Ícone<select name="icon"><option value="panel-top">Painel</option><option value="clipboard-list">Lista</option><option value="chart-column">Gráfico</option><option value="settings">Configurações</option><option value="file-text">Documento</option></select></label><div><button class="outline-button" id="cancel-module-form" type="button">Cancelar</button><button class="primary-button" type="submit">Adicionar tela</button></div></form>
+            <div class="sector-modules-card panel"><div class="sector-module-table module-sector-head"><span></span><span>Nome da tela</span><span>Categoria</span><span>Ordem</span><span>Status</span><span>Disponível para permissões</span><span>Ações</span></div><div id="sector-module-rows"><p class="database-empty">Carregando telas...</p></div></div>
+            <p class="sector-info-note"><i data-lucide="grip-vertical"></i>Use os controles de ordem para alterar a exibição das telas no menu do setor.</p>
+          </section>
+        </main>
+      </div>
+    </div>
+    <div class="confirmation-backdrop" id="delete-user-modal" hidden>
+      <section class="confirmation-dialog" role="alertdialog" aria-modal="true" aria-labelledby="delete-user-title" aria-describedby="delete-user-description">
+        <span class="confirmation-icon"><i data-lucide="triangle-alert"></i></span>
+        <h2 id="delete-user-title">Excluir usuário?</h2>
+        <p id="delete-user-description">Esta ação removerá <strong id="delete-user-name"></strong> e todas as permissões vinculadas. Não será possível desfazer.</p>
+        <div><button class="outline-button" id="cancel-delete-user" type="button">Cancelar</button><button class="danger-button" id="confirm-delete-user" type="button"><i data-lucide="trash-2"></i>Excluir definitivamente</button></div>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden><i data-lucide="circle-check"></i>Permissões salvas com sucesso.</div>
+    <script src="../assets/vendor/lucide.min.js"></script>
+    <script src="../assets/js/administradores.js"></script>
+  </body>
+</html>

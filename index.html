@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030a1c" />
+    <meta
+      name="description"
+      content="Acesso ao Portal de Gestão Operacional."
+    />
+    <title>PGO | Portal de Gestão Operacional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/login.css" />
+  </head>
+  <body>
+    <main class="login-page" data-node-id="2:4">
+      <section class="brand-section" data-node-id="2:5" aria-label="PGO">
+        <div class="brand-content">
+          <img
+            class="brand-logo"
+            src="./assets/images/branding/logo-branca.svg"
+            alt="PGO"
+          />
+          <span class="brand-divider" aria-hidden="true"></span>
+          <div class="brand-copy">
+            <h1>Portal de Gestão Operacional</h1>
+            <p>Gestão inteligente para operações eficientes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section" data-node-id="2:13" aria-label="Acesso ao PGO">
+        <header class="form-header" data-node-id="2:14">
+          <span class="access-badge">
+            <span class="bolt-icon" aria-hidden="true"></span>
+            Acesso ao portal
+          </span>
+          <img
+            class="header-logo"
+            src="./assets/images/branding/logo-azul.svg"
+            alt="PGO"
+          />
+        </header>
+
+        <form class="login-form" id="login-form" novalidate data-node-id="2:22">
+          <header class="greeting">
+            <h2>Bem-vindo de volta</h2>
+            <p>Acesse sua conta para continuar</p>
+          </header>
+
+          <div class="fields">
+            <div class="field-group">
+              <label for="username">Usuário</label>
+              <div class="field-control">
+                <svg class="field-icon user-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  autocomplete="username"
+                  placeholder="Ex: Pedro"
+                  aria-describedby="username-error"
+                  required
+                />
+              </div>
+              <span class="field-error" id="username-error"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="password">Senha</label>
+              <div class="field-control">
+                <svg class="field-icon lock-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="••••••••••••"
+                  aria-describedby="password-error"
+                  required
+                />
+                <button
+                  class="password-toggle"
+                  id="password-toggle"
+                  type="button"
+                  aria-label="Mostrar senha"
+                  aria-pressed="false"
+                >
+                  <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                  </svg>
+                  <svg class="eye-slash-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z"/>
+                    <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"/>
+                    <path d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="field-error" id="password-error"></span>
+            </div>
+          </div>
+
+          <div class="preferences-row">
+            <label class="remember-control">
+              <input id="remember" name="remember" type="checkbox" />
+              <span class="custom-check" aria-hidden="true"></span>
+              <span>Lembrar acesso</span>
+            </label>
+            <a href="#" id="forgot-password">Esqueci minha senha</a>
+          </div>
+
+          <div class="actions">
+            <button class="submit-button" type="submit">
+              <span class="button-label">Entrar no PGO</span>
+            </button>
+            <span class="secure-badge">
+              <span class="shield-icon" aria-hidden="true"></span>
+              Ambiente seguro
+            </span>
+          </div>
+
+          <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
+        </form>
+
+        <footer class="form-footer" data-node-id="2:53">
+          <span class="system-status"><i></i>Portal disponível</span>
+          <span>© 2026 PGO</span>
+        </footer>
+      </section>
+    </main>
+
+    <script src="./assets/js/login.js"></script>
+  </body>
+</html>

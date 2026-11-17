@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f6f9" />
+    <title>Setor | PGO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/sector.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <header class="home-header">
+        <a class="brand-logo" href="../home/" aria-label="Página inicial do PGO">
+          <img src="../assets/images/branding/logo-azul.svg" alt="PGO" />
+        </a>
+        <nav class="brand-section" aria-label="Navegação estrutural">
+          <span class="brand-divider" aria-hidden="true"></span>
+          <ol class="breadcrumbs"><li>PGO</li><li aria-hidden="true">/</li><li id="sector-breadcrumb" aria-current="page">Setor</li></ol>
+        </nav>
+        <a class="back-home" href="../home/"><i data-lucide="house" aria-hidden="true"></i>Início</a>
+        <div class="header-actions">
+          <div class="user-profile"><span class="user-copy"><strong>Carregando...</strong><small>Perfil</small></span><span class="avatar" aria-hidden="true"></span></div>
+          <button class="logout-button" id="logout-button" type="button"><i data-lucide="log-out" aria-hidden="true"></i>Sair</button>
+        </div>
+      </header>
+      <main class="sector-page">
+        <header class="sector-heading">
+          <a href="../home/"><i data-lucide="arrow-left" aria-hidden="true"></i>Voltar aos setores</a>
+          <h1 id="sector-title">Carregando setor...</h1>
+          <p id="sector-description">Buscando as telas liberadas para o seu usuário.</p>
+        </header>
+        <section class="module-grid" id="module-grid" aria-label="Telas disponíveis">
+          <p class="module-empty">Carregando telas...</p>
+        </section>
+      </main>
+      <footer class="home-footer"><p>© 2026 PGO • Plataforma de Gestão Operacional</p></footer>
+    </div>
+    <script src="../assets/vendor/lucide.min.js"></script>
+    <script type="module" src="../assets/js/modules/sectors/home.js"></script>
+  </body>
+</html>
+

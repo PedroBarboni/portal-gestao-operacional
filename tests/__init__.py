@@ -1,0 +1,2 @@
+"""Suíte automatizada do PGO."""
+

@@ -1,0 +1,14 @@
+dist/
+__pycache__/
+*.pyc
+*.log
+*.rar
+.env
+.env.*
+!.env.example
+.pnpm-store/
+node_modules/
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/tmp*/

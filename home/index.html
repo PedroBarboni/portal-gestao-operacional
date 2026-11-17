@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f6f9" />
+    <meta name="description" content="Setores do Sistema de Gestão Operacional." />
+    <title>Início | SGO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/home.css" />
+  </head>
+  <body>
+    <div class="dashboard" data-node-id="22:4">
+      <header class="home-header" data-node-id="22:5">
+        <a class="brand-logo" href="/home/" aria-label="Página inicial do SGO">
+          <img src="../assets/images/branding/logo-azul.svg" alt="PGO" />
+        </a>
+
+        <nav class="brand-section" aria-label="Navegação estrutural">
+          <span class="brand-divider" aria-hidden="true"></span>
+          <ol class="breadcrumbs">
+            <li>PGO</li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page">Início</li>
+          </ol>
+        </nav>
+
+        <label class="global-search">
+          <i data-lucide="search" aria-hidden="true"></i>
+          <input id="sector-search" type="search" placeholder="Buscar no sistema..." autocomplete="off" />
+        </label>
+
+        <div class="header-actions">
+          <button class="notification-button" type="button" aria-label="Notificações">
+            <i data-lucide="bell" aria-hidden="true"></i>
+          </button>
+          <span class="actions-divider" aria-hidden="true"></span>
+          <div class="profile-menu-container">
+            <button class="user-profile" id="profile-menu-button" type="button" aria-label="Abrir menu de perfil" aria-expanded="false" aria-controls="profile-menu">
+              <span class="user-copy"><strong>Carregando...</strong><small>Perfil</small></span>
+              <span class="avatar" aria-hidden="true"></span>
+            </button>
+
+            <div class="profile-dropdown" id="profile-menu" role="menu" aria-labelledby="profile-menu-button" data-node-id="38:4" hidden>
+              <div class="dropdown-profile-info">
+                <span class="dropdown-avatar" aria-hidden="true"></span>
+                <span class="dropdown-name"><strong>Carregando...</strong><small>Perfil</small></span>
+              </div>
+
+              <span class="dropdown-divider" aria-hidden="true"></span>
+
+              <button class="profile-menu-item" type="button" role="menuitem">
+                <i data-lucide="user-round" aria-hidden="true"></i>
+                <span>Meu perfil</span>
+              </button>
+              <a class="profile-menu-item is-active" href="../administradores/" role="menuitem">
+                <img src="../assets/icons/shield-check.svg" alt="" aria-hidden="true" />
+                <span>Administração</span>
+              </a>
+              <button class="profile-menu-item" type="button" role="menuitem">
+                <img src="../assets/icons/definicoes.svg" alt="" aria-hidden="true" />
+                <span>Configurações da conta</span>
+              </button>
+
+              <span class="dropdown-divider" aria-hidden="true"></span>
+
+              <a class="profile-menu-item is-logout" id="logout-link" href="../index.html" role="menuitem">
+                <i data-lucide="log-out" aria-hidden="true"></i>
+                <span>Sair</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <section class="welcome-row" aria-labelledby="welcome-title">
+          <div class="welcome-header">
+            <h1 id="welcome-title">Olá, Pedro</h1>
+            <p>Selecione um setor para acessar suas ferramentas.</p>
+          </div>
+          <p class="sector-count" aria-live="polite">
+            <i aria-hidden="true"></i>
+            <span id="sector-count">Carregando acessos...</span>
+          </p>
+        </section>
+
+        <section class="sector-grid" id="sector-grid" aria-label="Setores disponíveis">
+          <p class="empty-state" id="empty-state">Carregando setores...</p>
+        </section>
+      </main>
+
+      <footer class="home-footer">
+        <p>© 2026 PGO • Sistema operacional</p>
+        <nav aria-label="Links institucionais"><a href="#ajuda">Ajuda &amp; Suporte</a><a href="#termos">Termos de Uso</a></nav>
+      </footer>
+    </div>
+
+    <script src="../assets/vendor/lucide.min.js"></script>
+    <script src="../assets/js/home.js"></script>
+  </body>
+</html>
